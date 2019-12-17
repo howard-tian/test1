@@ -1,0 +1,36 @@
+.mat-form-field {
+    display: block;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.mat-raised-button {
+    font-size: large;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.keep-state-div {
+    display: inline;
+    margin: 0.5rem 0.5rem;
+}
+
+.keep-state-button {
+    margin-left: 1rem;
+}
+
+.keep-state-checkbox {
+    margin: 1rem 0rem;
+}
+
+mat-slider {
+    width: 300px;
+}
+
+.calenda-button {
+    float: right;
+}

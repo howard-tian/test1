@@ -1,0 +1,92 @@
+<div *ngIf="customer" class="device-info">
+  <div class="devices">
+    <span (click)="goback()" class="back">{{ 'Customers' | translate }}</span>
+    <ul>
+      <li>
+        <img src="../../../../assets/images/icon/next.png" alt="">
+        <span class="nav-self">{{customer.name}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="info-content">
+    <div>
+      <div class="ltop">
+        <div class="one">
+          <div class="info-row">
+
+            <div class="info-col3 imgs btns">
+              <p></p>
+
+            </div>
+          </div>
+        </div>
+        <div class="three">
+            <div *ngIf="customer.id" class="delbtns">
+              <button class="btn btn-success" (click)="edit()"><i class="fa fa-pencil"></i>  {{ 'Edit' | translate }}</button>
+              <button class="btn btn-danger" (click)="delete()" ><i class="fa fa-trash"></i>  {{ 'Delete' | translate }}</button>
+            </div>
+            
+          <div class="info-row">
+
+              
+            <div class="info-col35">
+              <p>{{ 'ID' | translate }}</p>
+              <p class="bold sl">{{customer.id}}</p>
+            </div>
+            <div class="info-col3">
+              <p>{{ 'Name' | translate }}</p>
+              <p class="bold">{{customer.name}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="five">
+          <div class="info-row">
+            <div class="info-col70">
+              <p>{{ 'Description' | translate }}</p>
+              <p class="sl bold">{{customer.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="proxyUser" class="info-content">
+    <div>
+      <div class="ltop">
+        <div class="card-title">
+          <p class="title">{{ 'Proxy user' | translate }}</p>
+        </div>
+        <div class="one">
+          <div class="info-row">
+
+            <div>
+              <div class="table-content">
+                <div class="mb-2 table-device table-responsive table-border">
+                  <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th >{{ 'ID' | translate }}</th>
+                        <th class="name">{{ 'Name' | translate }}</th>
+                        <th class="sm-show">{{ 'Mobile' | translate }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="data">{{proxyUser.id}}</td>
+                        <td class="name">{{proxyUser.name}}</td>
+                        <td class="sm-show">{{proxyUser.mobile}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

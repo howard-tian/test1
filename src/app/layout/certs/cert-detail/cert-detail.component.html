@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Certificate properties</h2>
+
+
+<div mat-dialog-content>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>{{ 'Name' | translate }}</th>
+        <th>{{ 'Value' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let k of certKeys">
+      <tr>
+        <td>{{k}}</td>
+        <td>{{cert[k]}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div mat-dialog-actions style="margin-top: 20px;">
+
+  <button class="mat-raised-button  mat-primary" (click)="close()">
+    {{ 'Close' | translate }}
+  </button>
+
+</div>

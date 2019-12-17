@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>{{ 'Client upgrade' | translate }}</h2>
+
+
+<div mat-dialog-content>
+
+  <div>
+    <mat-form-field>
+      <mat-label>{{ 'Apk file' | translate }}</mat-label>
+      <mat-select [(value)]="selectedApk">
+        <mat-option *ngFor="let apk of apkList" [value]="apk">{{apk.apkfile}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <ul style="list-style-type:disc;">
+        <li>{{ 'version: ' + selectedApk.versionCode + ', ' + selectedApk.versionName }}</li>
+        <li>{{ 'model: ' + device.model }}</li>
+      </ul>
+    </div>
+    <mat-form-field>
+      <input matInput placeholder="downloadTime" [(ngModel)]="upgradeParam.downloadTime">
+      <button class="calenda-button" (click)="showDownloadDateTime()"><span class="fa fa-calendar"></span></button>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="upgradeTime" [(ngModel)]="upgradeParam.upgradeTime">
+      <button class="calenda-button" (click)="showUpgradeDateTime()"><span class="fa fa-calendar"></span></button>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="checkCode" [(ngModel)]="upgradeParam.checkCode">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="description" [(ngModel)]="upgradeParam.description">
+    </mat-form-field>
+
+  </div>
+
+</div>
+
+<div mat-dialog-actions>
+
+    <button [disabled]="!canSend" class="mat-raised-button mat-primary" (click)="ok()">
+      {{ 'Send' | translate }}
+    </button>
+
+    <button class="mat-raised-button" (click)="cancel()">
+      {{ 'Close' | translate }}
+    </button>
+
+</div>

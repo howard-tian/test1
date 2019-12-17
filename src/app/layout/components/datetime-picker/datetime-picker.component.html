@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>{{ 'Select date time' | translate }}</h2>
+
+
+<div mat-dialog-content style="min-height: 320px;">
+
+    <div class="input-group datepicker-input">
+        <input class="form-control" placeholder="yyyy-mm-dd"
+            name="dp" [(ngModel)]="myDate" ngbDatepicker #d="ngbDatepicker">
+        <button class="input-group-addon" (click)="d.toggle()" type="button">
+            <span class="fa fa-calendar"></span>
+        </button>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+        <div class="card-body">
+            <ngb-timepicker [(ngModel)]="myTime" seconds="true"></ngb-timepicker>
+        </div>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+
+    <button class="mat-raised-button mat-primary" (click)="ok()">
+      {{ 'OK' | translate }}
+    </button>
+
+    <button class="mat-raised-button" (click)="cancel()">
+      {{ 'Cancel' | translate }}
+    </button>
+
+</div>

@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+
+<div mat-dialog-content>
+
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="data.customer.name">
+  </mat-form-field>
+
+  <mat-form-field *ngIf="proxyUsers.length">
+    <mat-label>{{ 'Select a proxy user' | translate }}</mat-label>
+    <!-- <select matNativeControl required [formControl]="selectFormControl" [(ngModel)]="selectedProxyUserId"> -->
+    <select matNativeControl required [(ngModel)]="selectedProxyUserIndex">
+      <!-- <option value="0"></option> -->
+      <option *ngFor="let proxyUser of proxyUsers; let i = index" [value]="i">{{proxyUser.username}}</option>
+    </select>
+    <!-- <mat-error *ngIf="selectFormControl.hasError('required')">
+      This field is required
+    </mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Description" [(ngModel)]="data.customer.description"></textarea>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions class="action-area">
+
+    <button [disabled]="data.command==='new'&&proxyUsers.length===0" class="mat-raised-button mat-primary" (click)="ok()">
+      {{ 'OK' | translate }}
+    </button>
+
+    <button class="mat-raised-button" (click)="cancel()">
+      {{ 'Cancel' | translate }}
+    </button>
+
+</div>

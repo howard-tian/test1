@@ -1,0 +1,44 @@
+<div>
+  <div class="create">
+    <p>{{ 'End users' | translate }}</p>
+    <div class="change-type" *ngIf="admin">
+      <button class="btn-sm btn-success create-btn" (click)="create()">
+        <i class="fa fa-plus"></i>
+        <span>{{ 'New end user' | translate }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <div class="table-content">
+      <div class="mb-2 table-device table-responsive table-border">
+        <table class="table table-hover table-striped">
+          <thead>
+          <tr>
+              <th >{{ 'ID' | translate }}</th>
+              <th class="name">{{ 'Name' | translate }}</th>
+              <th class="sm-show">{{ 'Mobile' | translate }}</th>
+              <th class="sm-show">{{ 'Email' | translate }}</th>
+              <th class="sm-show">{{ 'Roles' | translate }}</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let endUser of endUserPage.payload" >
+              <td class="data" (click)="goDetail(endUser.id)">{{endUser.id}}</td>
+              <td class="name">{{endUser.username}}</td>
+              <td class="sm-show">{{endUser.mobile}}</td>
+              <td class="sm-show">{{endUser.email}}</td>
+              <td class="sm-show">{{endUser.roles}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="center">
+      <ul class="page app-page">
+          <li *ngFor="let i of pages" class="pages {{i===curPage?'active':''}}" (click)="getPage(i)">{{i}}</li>
+      </ul>
+  </div>
+</div>

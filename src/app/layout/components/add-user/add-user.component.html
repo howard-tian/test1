@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{ 'Add user' | translate }}</h2>
+
+
+<div mat-dialog-content>
+
+  <mat-form-field>
+
+    <mat-label>{{ 'Select a user' | translate }}</mat-label>
+    <select matNativeControl required [(ngModel)]="selectedUserIndex">
+      <option *ngFor="let user of users; let i = index" [value]="i">{{user.username}}</option>
+    </select>
+
+  </mat-form-field>
+
+
+</div>
+
+<div mat-dialog-actions>
+
+    <button [disabled]="users.length===0" class="mat-raised-button mat-primary" (click)="save()">
+      {{ 'OK' | translate }}
+    </button>
+
+    <button class="mat-raised-button" (click)="close()">
+      {{ 'Cancel' | translate }}
+    </button>
+
+  </div>

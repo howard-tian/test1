@@ -1,0 +1,64 @@
+<div class="set">
+  <h5 class="weight">{{ 'Settings' | translate }}</h5>
+  <button class="btn-sm create-btn" (click)="showAPK=true;showXLS=false;">
+    <i class="fa fa-plus"></i>
+    <span>{{ 'Upload agent APK' | translate }}</span>
+  </button>
+  <br>
+  <br>
+  <!-- <table class="table">
+      <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let con of settinglist">
+            <td class="name" (click)="getAservice(con)">{{con.service}}</td>
+            <td>{{con.description}}</td>
+            <td>
+              <div (click)="getAservice(con)" class="bgcimage cursor"></div>
+            </td>
+        </tr>
+      </tbody>
+  </table> -->
+  <div *ngIf="apkUrl">
+    <p>{{ 'You can use below URL to download the apk file:' | translate }}</p>
+    <a [href]="apkUrl" target="_blank">{{apkUrl}}</a>
+  </div>
+
+  <br>
+  <button class="btn-sm create-btn" (click)="importDevices()">
+    <i class="fa fa-file-excel-o"></i>
+    <span>{{ 'Import devices' | translate }}</span>
+  </button>
+</div>
+<div class="bixbox" *ngIf="showAPK">
+  <div class="ltbox">
+    <div>
+      {{ 'Version' | translate }} <input type="text" class="version" [(ngModel)]="APKversion">
+    </div>
+    <br>
+    <div class="apk">
+      {{ 'APK file' | translate }} <input class="apkfile" type="file" accept=".apk" (change)="uploadfile($event.target)">
+      <img src="/assets/images/+_normal@2x.png">
+      <p>{{APKFlie?APKFlie.name:''}}</p>
+    </div>
+    <button class="btn-sm btn-success done" (click)="uploadAPK()">{{ 'Upload' | translate }}</button>
+    <button class="btn-sm btn-danger cancel" (click)="showAPK=false">{{ 'Cancel' | translate }}</button>
+  </div>
+</div>
+
+<div class="bixbox" *ngIf="showXLS">
+    <div class="ltbox">
+      <div class="apk">
+        {{ 'Excel file' | translate }} <input class="apkfile" type="file" accept=".xlsx,.xls" (change)="importfile($event.target)">
+        <img src="/assets/images/+_normal@2x.png">
+        <p>{{XLSFile?XLSFile.name:''}}</p>
+      </div>
+      <button class="btn-sm btn-success done" (click)="uploadXLS()">{{ 'Upload' | translate }}</button>
+      <button class="btn-sm btn-danger cancel" (click)="showXLS=false">{{ 'Cancel' | translate }}</button>
+    </div>
+  </div>

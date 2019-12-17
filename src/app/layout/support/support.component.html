@@ -1,0 +1,15 @@
+<div>
+    <div class="create">
+      <p>{{ 'Support' | translate }}</p>
+      <p>{{ 'If you cannot login, you can try re-register your account.' | translate }}</p>
+      <div class="change-type" *ngIf="admin">
+        <button class="btn-sm btn-success create-btn" (click)="forceRegister()">
+          <i class="fa fa-medkit"></i>
+          <span>{{ 'Re-register user...' | translate }}</span>
+        </button>
+      </div>
+    </div>
+  
+ 
+
+</div>

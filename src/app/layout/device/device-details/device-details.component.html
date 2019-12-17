@@ -1,0 +1,90 @@
+<div class="device-info">
+  <p class="devices">
+    <span (click)="goback()" class="back">{{ 'Device' | translate }}</span>
+    <img src="../../../../assets/images/icon/next.png" alt="">
+    <span>{{DeviceDetail.model}}</span>
+  </p>
+  <div class="info-content">
+    <div>
+      <div class="ltop">
+        <div class="one">
+          <div class="info-row">
+            <div class="info-col70">
+              <p class="position">{{ 'Device' | translate }}</p>
+              <p class="weight bottom sl">{{DeviceDetail.name}} <span *ngIf="DeviceDetail.deleted" style="color: red;">  {{'(deleted)' | translate}}</span></p>
+            </div>
+            <div class="info-col3 imgs btns">
+              <p></p>
+              <div class="delbtns">
+                <button title="send command" class="send-btn" (click)="sencommand()" ></button>&nbsp;
+                <button title="upgrade client" class="roll" (click)="upgrade()"></button>
+                <button title="delete" class="del" (click)="delete(DeviceDetail.uuid)" ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="three">
+          <div class="info-row">
+            <div class="info-col35">
+              <p>{{ 'STATUS' | translate }}</p>
+              <p class="status bold">
+                <img src="../../../../assets/images/icon/yes.png" alt="" *ngIf="DeviceDetail.status">
+                <img src="../../../../assets/images/icon/no.png" alt="" *ngIf="!DeviceDetail.status">
+                <span class="font-position">{{DeviceDetail.status | deviceStatus}}</span>
+              </p>
+            </div>
+            <div class="info-col35">
+              <p>{{ 'UUID' | translate }}</p>
+              <p class="bold sl">{{DeviceDetail.uuid}}</p>
+            </div>
+            <div class="info-col3">
+              <p>{{ 'OS' | translate }}</p>
+              <p class="bold">{{DeviceDetail.os}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="five">
+          <div class="info-row">
+            <div class="info-col35">
+              <p>{{ 'CreateTime' | translate }}</p>
+              <p class="sl bold">{{DeviceDetail.createTime?format(DeviceDetail.createTime):''}}</p>
+            </div>
+            <div class="info-col35">
+              <p>{{ 'UpdateTime' | translate }}</p>
+              <p class="sl bold">{{DeviceDetail.updateTime?format(DeviceDetail.updateTime):''}}</p>
+            </div>
+            <div class="info-col3">
+              <p>{{ 'ActiveTime' | translate }}</p>
+              <p class="sl bold">{{DeviceDetail.activeTime?format(DeviceDetail.activeTime):''}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shadow-border">
+        <div class="card mb-3 more-top-space">
+          <div class="card-header">{{ 'Properties' | translate }}</div>
+          <div class="card-body table-responsive">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>{{ 'Name' | translate }}</th>
+                    <th>{{ 'Value' | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let k of devicePropertyKeys">
+                <tr>
+                  <td>{{k}}</td>
+                  <td>{{DeviceDetail[k]}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,108 @@
+<h2 mat-dialog-title>{{ 'Send command' | translate }}</h2>
+
+
+<div mat-dialog-content>
+
+  <mat-form-field>
+    <input matInput disabled placeholder="uuid" [(ngModel)]="data.command.uuid">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ 'Command' | translate }}</mat-label>
+    <mat-select [(value)]="data.command.command">
+      <mat-option *ngFor="let co of commandOptions" [value]="co">{{co}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- <mat-form-field>
+    <input matInput placeholder="parameter" [(ngModel)]="command.parameter">
+  </mat-form-field> -->
+
+  <mat-form-field>
+    <input matInput disabled [placeholder]="'type' | translate" [(ngModel)]="data.command.type">
+  </mat-form-field>
+
+  <div *ngIf="data.command.command==='devicecontrol'">
+    <mat-form-field>
+      <mat-label>{{ 'Angle' | translate }}</mat-label>
+      <mat-select [(value)]="data.command.parameter.angle">
+        <mat-option *ngFor="let angle of angleOptions" [value]="angle">{{angle}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- <mat-form-field>
+      <mat-label>{{ 'Operation' | translate }}</mat-label>
+      <mat-select [(value)]="command.parameter.operation">
+        <mat-option *ngFor="let op of operationOptions" [value]="op">{{op}}</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+
+    <mat-label>{{ 'Volume' | translate }}</mat-label>
+    <mat-slider thumbLabel min="0" max="100" step="1" value="0" [(ngModel)]="data.command.parameter.volume"></mat-slider>
+    <mat-label>{{data.command.parameter.volume}}</mat-label>
+  </div>
+
+  <div *ngIf="data.command.command==='client_upgrade'">
+    <mat-form-field>
+      <mat-label>{{ 'Apk file' | translate }}</mat-label>
+      <mat-select [(value)]="selectedApk">
+        <mat-option *ngFor="let apk of apkList" [value]="apk">{{apk.apkfile}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="description" [(ngModel)]="upgradeParam.description">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="downloadTime" [(ngModel)]="upgradeParam.downloadTime">
+      <button class="calenda-button" (click)="showDownloadDateTime()"><span class="fa fa-calendar"></span></button>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="upgradeTime" [(ngModel)]="upgradeParam.upgradeTime">
+      <button class="calenda-button" (click)="showUpgradeDateTime()"><span class="fa fa-calendar"></span></button>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="checkCode" [(ngModel)]="upgradeParam.checkCode">
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="data.command.command==='setonoff'">
+    <mat-form-field>
+      <input matInput placeholder="on" [(ngModel)]="onOffParam.on">
+      <button class="calenda-button" (click)="showOnDateTime()"><span class="fa fa-calendar"></span></button>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="off" [(ngModel)]="onOffParam.off">
+      <button class="calenda-button" (click)="showOffDateTime()"><span class="fa fa-calendar"></span></button>
+    </mat-form-field>
+  </div>
+  
+  <!-- <mat-radio-group aria-label="keepState">
+    <mat-label>keepState</mat-label>
+    <div class="keep-state-div" >
+      <mat-radio-button class="keep-state-button" value="1">true</mat-radio-button>
+      <mat-radio-button class="keep-state-button" value="0">false</mat-radio-button>
+    </div>
+  </mat-radio-group> -->
+
+  <div class="keep-state-checkbox">
+    <mat-checkbox [(ngModel)]="data.command.keepState">keepState</mat-checkbox>
+  </div>
+
+</div>
+
+<div mat-dialog-actions>
+
+    <button [disabled]="!canSend" class="mat-raised-button mat-primary" (click)="ok()">
+      {{ 'Send' | translate }}
+    </button>
+
+    <button class="mat-raised-button" (click)="cancel()">
+      {{ 'Close' | translate }}
+    </button>
+
+</div>

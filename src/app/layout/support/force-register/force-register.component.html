@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>{{ 'Force register' | translate }}</h2>
+
+
+<div mat-dialog-content>
+
+  <mat-form-field>
+    <input matInput placeholder="Email" [(ngModel)]="email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="password" matInput placeholder="Password" [(ngModel)]="password">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions class="action-area">
+
+    <button [disabled]="!canOk || email.trim()==='' || password.trim()===''" class="mat-raised-button mat-primary" (click)="ok()">
+      {{ 'OK' | translate }}
+    </button>
+
+    <button class="mat-raised-button" (click)="cancel()">
+      {{ 'Cancel' | translate }}
+    </button>
+
+</div>

@@ -1,0 +1,46 @@
+<div class="login-page" [@routerTransition]>
+    <div class="header">
+        <span class="logo" (click)="router.navigate(['/index'])">KDS Console</span>
+        <span class="sign">There are already accounts? <button class="btn-sm signup" [routerLink]="['/login']"> Login</button></span>
+      </div>
+      <div class="rows justify-content-md-center contents">
+          <div class="col-md-4">
+              <div style="padding-bottom: 2rem;">
+                  <img src="../../assets/images/index/two4.png" width="100%" alt=""/>
+                </div>
+    
+              <h4 class="weight">
+                  Create an Account
+              </h4>
+              <form role="form">
+                  <div class="form-content">
+                    <!-- <div class="form-group">
+                      <label class="fl">User name</label>
+                      <input type="text" (change)="user.username=$event.target.value" class="form-control" placeholder="4 - 20 characters">
+                    </div> -->
+                    <div class="form-group">
+                      <label class="fl">Email</label>
+                      <input type="email" (change)="user.email=$event.target.value" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <label class="fl">Password</label>
+                        <input type="password" (change)="user.password=$event.target.value" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <label class="fl">Confirm Password</label>
+                        <input type="password" (change)="password=$event.target.value" class="form-control" >
+                    </div>
+                  </div>
+                  <!-- <span class="litfonts"><input type="checkbox" checked> Send me the balena monthly newsletter</span> -->
+                  <!-- <p class="litfont">We send one newsletter a month, and do not share your e-mail with third parties.</p> -->
+                  <a class="btn rounded-btn signups" (click)="register()">Sign up</a>
+                  <!-- <span class="pwd">By signing up, I agree to Ciot's<a href="javascript:"> Terms of Service.</a></span> -->
+                  <!-- &nbsp;
+                  <a class="btn rounded-btn" [routerLink]="['/signup']">{{ 'Register' | translate }}</a> -->
+              </form>
+          </div>
+      </div>
+</div>
+<div *ngIf="showtext" class="tiptext">
+  {{text}}
+</div>

@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{ 'Add customer' | translate }}</h2>
+
+
+<div mat-dialog-content>
+
+  <mat-form-field>
+
+    <mat-label>{{ 'Select a customer' | translate }}</mat-label>
+    <select matNativeControl required [(ngModel)]="selectedCustomerIndex">
+      <option *ngFor="let customer of customers; let i = index" [value]="i">{{customer.name}}</option>
+    </select>
+
+  </mat-form-field>
+
+
+</div>
+
+<div mat-dialog-actions>
+
+    <button [disabled]="customers.length===0" class="mat-raised-button mat-primary" (click)="save()">
+      {{ 'OK' | translate }}
+    </button>
+
+    <button class="mat-raised-button" (click)="close()">
+      {{ 'Cancel' | translate }}
+    </button>
+
+  </div>
